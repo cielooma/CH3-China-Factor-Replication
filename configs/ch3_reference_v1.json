@@ -1,0 +1,52 @@
+{
+  "experiment_id": "EXP-CH3-002",
+  "run": {
+    "label": "CH-3 reproduction on the licensed A-share panel, 2000-2016",
+    "research_question": "Does an independent construction on the licensed panel reproduce the published CH-3 factor series within the preregistered tolerance?",
+    "alignment_target_corr": 0.90,
+    "market_path": "private_data/ch3_monthly_market.csv",
+    "fundamentals_path": "private_data/ch3_fundamentals.csv",
+    "author_path": "author_data/ch3_author_factors_monthly.csv",
+    "output_path": "private_outputs/ch3_reference_2000_2016",
+    "periods": {
+      "sub_period_1": ["2000-01-31", "2008-12-31"],
+      "sub_period_2": ["2009-01-31", "2016-12-31"]
+    },
+    "features": [
+      {"name": "size_total_market_cap", "fit_window": "cross_section_at_formation"},
+      {"name": "ep_ttm_excl_nonrecurring", "fit_window": "latest_announcement_before_formation"},
+      {"name": "bm_control", "fit_window": "latest_announcement_before_formation"}
+    ],
+    "registry_notes": "Licensed panel. The panel must carry one formation month before 2000-01 so that the first factor observation is dated 2000-01.",
+    "notes": "This is the experiment that must reach the preregistered 0.90 alignment target, or produce a documented per-item discrepancy log."
+  },
+  "ch3": {
+    "experiment_id": "EXP-CH3-002",
+    "strategy_name": "ch3_reference_2000_2016",
+    "paper": "Liu, Stambaugh, Yuan (2019), Size and value in China, JFE 134(1):48-69",
+    "data_version": "wind_ch3_v1",
+    "sample_start": "2000-01-31",
+    "sample_end": "2016-12-31",
+    "min_listing_months": 6,
+    "min_trading_days_12m": 120,
+    "min_trading_days_1m": 15,
+    "min_stocks_per_portfolio": 50,
+    "exclude_smallest_fraction": 0.3,
+    "exclude_smallest_by": "count",
+    "market_cap_lag_months": 0,
+    "exclude_st": false,
+    "exclude_financials": false,
+    "size_breakpoint": "median",
+    "breakpoint_weighting": "equal",
+    "value_signal": "ep",
+    "value_breakpoints": [0.3, 0.7],
+    "require_positive_earnings": false,
+    "book_to_market_control": true,
+    "require_positive_book_equity": true,
+    "market_universe": "eligible",
+    "weighting": "value_weighted",
+    "risk_free_field": "rf_1y_deposit",
+    "risk_free_annual": 0.0,
+    "seed": 20260831
+  }
+}

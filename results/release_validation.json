@@ -1,0 +1,58 @@
+{
+  "packaged_on": "2026-09-29",
+  "tests": {
+    "tests": 154,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "synthetic": {
+    "calendar_months": 204,
+    "leakage_passed": true,
+    "quality_problems": [],
+    "alignment": [
+      {
+        "factor": "MKT",
+        "n_months": 204,
+        "correlation": 0.93,
+        "target_corr": 0.9,
+        "status": "meets target"
+      },
+      {
+        "factor": "SMB",
+        "n_months": 204,
+        "correlation": 0.9493,
+        "target_corr": 0.9,
+        "status": "meets target"
+      },
+      {
+        "factor": "VMG",
+        "n_months": 204,
+        "correlation": 0.9221,
+        "target_corr": 0.9,
+        "status": "meets target"
+      },
+      {
+        "factor": "HML_BM",
+        "n_months": 204,
+        "correlation": 0.9412,
+        "target_corr": 0.9,
+        "status": "meets target"
+      },
+      {
+        "factor": "SMB_FF",
+        "n_months": 204,
+        "correlation": 0.9282,
+        "target_corr": 0.9,
+        "status": "meets target"
+      }
+    ]
+  },
+  "real_data_rerun": false,
+  "remote_git_configured": false,
+  "pytest_summary": {
+    "passed": 133,
+    "skipped": 2,
+    "additional_subtests": 19
+  }
+}

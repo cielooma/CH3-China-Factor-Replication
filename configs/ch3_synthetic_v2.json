@@ -1,0 +1,72 @@
+{
+  "experiment_id": "EXP-CH3-003",
+  "run": {
+    "label": "CH-3 smoke test on the synthetic panel",
+    "research_question": "Does the CH-3 construction recover the factor structure embedded in the synthetic panel, end to end and without leakage?",
+    "alignment_target_corr": 0.9,
+    "market_path": "synthetic_data/ch3_monthly_market.csv",
+    "fundamentals_path": "synthetic_data/ch3_fundamentals.csv",
+    "author_path": "synthetic_data/ch3_author_factors.csv",
+    "output_path": "private_outputs/ch3_synthetic_v2",
+    "periods": {
+      "sub_period_1": [
+        "2000-01-31",
+        "2008-12-31"
+      ],
+      "sub_period_2": [
+        "2009-01-31",
+        "2016-12-31"
+      ]
+    },
+    "features": [
+      {
+        "name": "size_total_market_cap",
+        "fit_window": "cross_section_at_formation"
+      },
+      {
+        "name": "ep_ttm_excl_nonrecurring",
+        "fit_window": "latest_announcement_before_formation"
+      },
+      {
+        "name": "bm_control",
+        "fit_window": "latest_announcement_before_formation"
+      }
+    ],
+    "registry_notes": "Synthetic fixture: verifies plumbing and recovery of the embedded latent factors. No investment inference is drawn from it.",
+    "notes": "Synthetic-only engineering check. Legacy earnings_ttm and shared me are explicit synthetic conventions, not the licensed-data baseline."
+  },
+  "ch3": {
+    "experiment_id": "EXP-CH3-003",
+    "strategy_name": "ch3_synthetic_v2",
+    "paper": "Liu, Stambaugh, Yuan (2019), Size and value in China, JFE 134(1):48-69",
+    "data_version": "synthetic_ch3_v1",
+    "sample_start": "2000-01-31",
+    "sample_end": "2016-12-31",
+    "min_listing_months": 6,
+    "min_trading_days_12m": 120,
+    "min_trading_days_1m": 15,
+    "min_stocks_per_portfolio": 50,
+    "exclude_smallest_fraction": 0.3,
+    "exclude_smallest_by": "count",
+    "market_cap_lag_months": 0,
+    "exclude_st": false,
+    "exclude_financials": false,
+    "size_breakpoint": "median",
+    "breakpoint_weighting": "equal",
+    "value_signal": "ep",
+    "value_breakpoints": [
+      0.3,
+      0.7
+    ],
+    "require_positive_earnings": false,
+    "book_to_market_control": true,
+    "require_positive_book_equity": true,
+    "market_universe": "eligible",
+    "weighting": "value_weighted",
+    "risk_free_field": "rf_1y_deposit",
+    "risk_free_annual": 0.0,
+    "seed": 20260831,
+    "negative_ep_policy": "force_growth",
+    "require_full_sample": true
+  }
+}

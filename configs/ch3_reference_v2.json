@@ -1,0 +1,76 @@
+{
+  "experiment_id": "EXP-CH3-004",
+  "run": {
+    "label": "CH-3 reproduction on the licensed A-share panel, 2000-2016",
+    "research_question": "Does an independent construction on the licensed panel reproduce the published CH-3 factor series within the preregistered tolerance?",
+    "alignment_target_corr": 0.9,
+    "market_path": "private_data/ch3_monthly_market.csv",
+    "fundamentals_path": "private_data/ch3_fundamentals.csv",
+    "author_path": "author_data/verified_20260925/ch3_monthly_official.csv",
+    "output_path": "private_outputs/ch3_reference_v2",
+    "periods": {
+      "sub_period_1": [
+        "2000-01-31",
+        "2008-12-31"
+      ],
+      "sub_period_2": [
+        "2009-01-31",
+        "2016-12-31"
+      ]
+    },
+    "features": [
+      {
+        "name": "size_total_market_cap",
+        "fit_window": "cross_section_at_formation"
+      },
+      {
+        "name": "ep_reported_excl_nonrecurring",
+        "fit_window": "latest_announcement_before_formation"
+      },
+      {
+        "name": "bm_control",
+        "fit_window": "latest_announcement_before_formation"
+      }
+    ],
+    "registry_notes": "Licensed panel. The panel must carry one formation month before 2000-01 so that the first factor observation is dated 2000-01.",
+    "notes": "Reported earnings is the literal reading of Appendix A.2/B.1; TTM is a separate, unverified sensitivity, not the baseline."
+  },
+  "ch3": {
+    "experiment_id": "EXP-CH3-004",
+    "strategy_name": "ch3_reference_v2",
+    "paper": "Liu, Stambaugh, Yuan (2019), Size and value in China, JFE 134(1):48-69",
+    "data_version": "wind_ch3_v2",
+    "sample_start": "2000-01-31",
+    "sample_end": "2016-12-31",
+    "min_listing_months": 6,
+    "min_trading_days_12m": 120,
+    "min_trading_days_1m": 15,
+    "min_stocks_per_portfolio": 50,
+    "exclude_smallest_fraction": 0.3,
+    "exclude_smallest_by": "count",
+    "market_cap_lag_months": 0,
+    "exclude_st": false,
+    "exclude_financials": false,
+    "size_breakpoint": "median",
+    "breakpoint_weighting": "equal",
+    "value_signal": "ep",
+    "value_breakpoints": [
+      0.3,
+      0.7
+    ],
+    "require_positive_earnings": false,
+    "book_to_market_control": true,
+    "require_positive_book_equity": true,
+    "market_universe": "eligible",
+    "weighting": "value_weighted",
+    "risk_free_field": "rf_monthly",
+    "risk_free_annual": 0.0,
+    "seed": 20260831,
+    "earnings_field": "earnings_reported",
+    "valuation_cap_field": "valuation_me",
+    "negative_ep_policy": "force_growth",
+    "risk_free_is_monthly_decimal": true,
+    "require_risk_free": true,
+    "require_full_sample": true
+  }
+}

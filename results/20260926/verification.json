@@ -1,0 +1,10 @@
+{
+  "unique_holdings": true,
+  "announcement_before_formation": true,
+  "one_month_forward_returns": true,
+  "six_leg_identities": true,
+  "positive_finite_weights": true,
+  "negative_profit_in_growth": true,
+  "historical_prefix_without_future_data": true,
+  "prefix_months": 156
+}
